@@ -184,3 +184,66 @@ void* new(GlobalState* state, Type t){
     self->type = t;
     return self;
 }
+
+static void copyVar(GlobalState* state, Dict* marked, Var v);
+
+static void copyString(GlobalState* state, Dict* marked, String* s);
+static void copyIdentifier(GlobalState* state, Dict* marked, Identifier* id);
+static void copyAssign(GlobalState* state, Dict* marked, Assign* a);
+static void copyFunction(GlobalState* state, Dict* marked, Function* f);
+static void copyArray(GlobalState* state, Dict* marked, Array* a);
+static void copyCall(GlobalState* state, Dict* marked, Call* c);
+static void copyDict(GlobalState* state, Dict* marked, Dict* d){
+
+}
+static void copyVar(GlobalState* state, Dict* marked, Var v){
+    switch(v.type){
+        case ARRAY:      copyArray(state, marked, v.ptr)       break;
+        case DICT:       copyDict(state, marked, v.ptr)        break;
+        case STRING:     copyString(state, marked, v.ptr)      break;
+        case FUNCTION:   copyFunction(state, marked, v.ptr)    break;
+        case CALL:       copyCall(state, marked, v.ptr)        break;
+        case ASSIGNMENT: copyAssign(state, marked, v.ptr)      break;
+        case IDENTIFIER: copyIdentifier(state, marked, v.ptr); break;
+    }
+}
+
+static void copyCollect(GlobalState* state){
+    Dict* marked = _malloc(sizeof(Dict));
+    marked->count = 0;
+    marked->length = 0;
+    marked->data = NULL;
+
+    void* prev = state->heap;
+    state->heap = malloc(1024*1024*1024);
+
+    copyArray(state->module);
+    copyArray(state->tmp);
+    copyDict(state->stack);
+
+    free(prev);
+    _free(marked->data);
+    _free(marked);
+}
+
+void* GC_new(GlobalState* state, Type t){
+    if(state->newCount > GC_COUNTER){
+        copyCollect(state);
+    }
+    size_t size;
+    switch(t){
+        case ARRAY:       size = sizeof(Array);     break;
+        case DICT:        size = sizeof(Dict);      break;
+        case STRING:      size = sizeof(String);    break;
+        case FUNCTION:    size = sizeof(Function);  break;
+        case CALL:        size = sizeof(Call);      break;
+        case ASSIGNMENT:  size = sizeof(Assign);    break;
+        case IDENTIFIER:  size = sizeof(Identifier);break;
+        default:          printf("Wrong Tag\n");   exit(0xdeadbeef);
+    }
+    memset(state->heapNext, 0, size);
+    Block* self = state->heapNext;
+    self->type = t;
+    state->heapNext += size;
+    return self;
+}
