@@ -118,3 +118,34 @@ String* stringSlice(GlobalState* state, String* s, size_t begin, size_t end){
     memcpy(self->data, s->data + begin, self->length);
     return self;
 }
+
+Identifier* identifierFromChar(GlobalState* state, char* x){
+    size_t length = strlen(x);
+    Identifier* self = new(state, IDENTIFIER);
+    self->source = (void*)self;
+    self->data = x;
+    self->length = length;
+    return self;
+}
+int identifierCompare(Identifier* a, Identifier* b){
+    if(a == b)
+        return 0;
+    if(a->length != b->length)
+        return a->length - b->length;
+    for(int i = 0; i < a->length; i++){
+        if(a->data[i] != b->data[i])
+            return a->data[i] - b->data[i];
+    }
+    return 0;
+}
+size_t identifierToHash(Identifier* a){
+    union Hash h;
+    h.result = 0;
+
+    int index = 0;
+    for(int i = 0; i < a->length; i++){
+        h.bytes[index] += a->data[i];
+        index++; index %= 8;
+    }
+    return h.result;
+}

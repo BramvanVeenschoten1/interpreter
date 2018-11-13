@@ -9,8 +9,5 @@ int main(int argc, char** argv)
     stateInit(&state);
     parseModule(&state, "main.lol");
     evaluate(&state);
-
-    memPrint(&state);
-
     return 0;
 }

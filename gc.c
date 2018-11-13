@@ -8,6 +8,7 @@
 #include "mystring.h"
 #include "var.h"
 
+#define GC_COUNTER 150
 int bufCount = 0;
 
 static void arrayMark(Array* a){
@@ -53,8 +54,11 @@ static void assignMark(Assign* a){
 
 void mark(Var v){
     switch(v.type){
-    case STRING:
-    case IDENTIFIER:  ((Block*)v.ptr)->tag = 1; return;
+    case STRING:      ((Block*)v.ptr)->tag = 1;
+                      return;
+    case IDENTIFIER:  ((Identifier*)v.ptr)->tag = 1;
+                      ((Identifier*)v.ptr)->source->tag = 1;
+                      return;
     case DICTEXPR:
     case ARRAY:       return arrayMark(v.ptr);
     case DICT:        return dictMark(v.ptr);
@@ -84,6 +88,7 @@ void sweep(GlobalState* state){
                 case ARRAY:      _free(((Array*)p)->data);  free(p); break;
                 case DICT:       _free(((Dict*)p)->data);   free(p); break;
                 case STRING:     _free(((String*)p)->data); free(p); break;
+                case IDENTIFIER: free(p); break;
                 case FUNCTION:   free(p); break;
                 case CALL:       free(p); break;
                 case ASSIGNMENT: free(p); break;
@@ -108,6 +113,7 @@ void memPrint(GlobalState* state){
     int function = 0;
     int assign = 0;
     int call = 0;
+    int ident = 0;
 
     Block* p = state->gc;
     while(p){
@@ -117,13 +123,14 @@ void memPrint(GlobalState* state){
             case DICT:       dict++;     break;
             case FUNCTION:   function++; break;
             case ASSIGNMENT: assign++;   break;
+            case IDENTIFIER: ident++;    break;
             case CALL:       call++;     break;
             default: printf("Fatal Error: Memory Corrupted\n"); exit(0xcafef00d);
         }
         p = p->next;
     }
-    printf("Living objects: \nString:\t\t%d\nArray:\t\t%d\nDict:\t\t%d\nFunction:\t%d\nAssign:\t\t%d\nCall:\t\t%d\nBuffer:\t\t%d\n",
-           string, array, dict, function, assign, call, bufCount);
+    printf("Living objects: \nString:\t\t%d\nArray:\t\t%d\nDict:\t\t%d\nFunction:\t%d\nIdentifier:\t%dAssign:\t\t%d\nCall:\t\t%d\nBuffer:\t\t%d\n",
+           string, array, dict, function, ident, assign, call, bufCount);
 }
 
 void* _malloc(size_t size){
@@ -150,7 +157,7 @@ void _free(void* ptr){
     free(ptr);
 }
 void* new(GlobalState* state, Type t){
-    if(state->newCount > 100){
+    if(state->newCount > GC_COUNTER){
         unmark(state);
         dictMark(state->stack);
         arrayMark(state->tmp);
@@ -162,12 +169,13 @@ void* new(GlobalState* state, Type t){
 
     size_t size;
     switch(t){
-        case ARRAY:       size = sizeof(Array);    break;
-        case DICT:        size = sizeof(Dict);     break;
-        case STRING:      size = sizeof(String);   break;
-        case FUNCTION:    size = sizeof(Function); break;
-        case CALL:        size = sizeof(Call);     break;
-        case ASSIGNMENT:  size = sizeof(Assign);   break;
+        case ARRAY:       size = sizeof(Array);     break;
+        case DICT:        size = sizeof(Dict);      break;
+        case STRING:      size = sizeof(String);    break;
+        case FUNCTION:    size = sizeof(Function);  break;
+        case CALL:        size = sizeof(Call);      break;
+        case ASSIGNMENT:  size = sizeof(Assign);    break;
+        case IDENTIFIER:  size = sizeof(Identifier);break;
         default:          printf("Wrong Tag\n");   exit(0xdeadbeef);
     }
     Block* self = calloc(1, size);

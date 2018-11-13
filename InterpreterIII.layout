@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_layout_file>
+	<FileVersion major="1" minor="0" />
+	<ActiveTarget name="Release" />
+	<File name="dict.c" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1426" topLine="0" />
+		</Cursor>
+		<Folding>
+			<Collapse line="20" />
+			<Collapse line="29" />
+			<Collapse line="51" />
+			<Collapse line="73" />
+			<Collapse line="87" />
+			<Collapse line="108" />
+			<Collapse line="125" />
+			<Collapse line="135" />
+			<Collapse line="175" />
+		</Folding>
+	</File>
+	<File name="var.h" open="1" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="365" topLine="22" />
+		</Cursor>
+	</File>
+	<File name="gc.c" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="178" topLine="0" />
+		</Cursor>
+		<Folding>
+			<Collapse line="12" />
+			<Collapse line="20" />
+			<Collapse line="31" />
+			<Collapse line="38" />
+			<Collapse line="45" />
+			<Collapse line="53" />
+			<Collapse line="66" />
+			<Collapse line="73" />
+			<Collapse line="103" />
+			<Collapse line="128" />
+			<Collapse line="136" />
+			<Collapse line="145" />
+			<Collapse line="151" />
+		</Folding>
+	</File>
+	<File name="gc.h" open="1" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="82" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="eval.h" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="286" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="mystring.c" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1431" topLine="0" />
+		</Cursor>
+		<Folding>
+			<Collapse line="10" />
+			<Collapse line="15" />
+			<Collapse line="22" />
+			<Collapse line="30" />
+			<Collapse line="36" />
+			<Collapse line="43" />
+			<Collapse line="54" />
+			<Collapse line="63" />
+			<Collapse line="72" />
+			<Collapse line="91" />
+			<Collapse line="99" />
+			<Collapse line="108" />
+		</Folding>
+	</File>
+	<File name="dict.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="314" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="array.c" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="4031" topLine="0" />
+		</Cursor>
+		<Folding>
+			<Collapse line="10" />
+			<Collapse line="19" />
+			<Collapse line="31" />
+			<Collapse line="37" />
+			<Collapse line="44" />
+			<Collapse line="67" />
+			<Collapse line="70" />
+			<Collapse line="74" />
+			<Collapse line="83" />
+			<Collapse line="89" />
+			<Collapse line="120" />
+			<Collapse line="132" />
+			<Collapse line="144" />
+			<Collapse line="153" />
+		</Folding>
+	</File>
+	<File name="eval.c" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1691" topLine="0" />
+		</Cursor>
+		<Folding>
+			<Collapse line="10" />
+			<Collapse line="17" />
+			<Collapse line="24" />
+			<Collapse line="33" />
+			<Collapse line="43" />
+			<Collapse line="53" />
+			<Collapse line="71" />
+			<Collapse line="123" />
+			<Collapse line="138" />
+			<Collapse line="151" />
+			<Collapse line="164" />
+			<Collapse line="176" />
+		</Folding>
+	</File>
+	<File name="main.c" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="118" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="array.h" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="597" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="operations.c" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1343" topLine="0" />
+		</Cursor>
+		<Folding>
+			<Collapse line="10" />
+			<Collapse line="21" />
+			<Collapse line="26" />
+			<Collapse line="31" />
+			<Collapse line="38" />
+			<Collapse line="45" />
+			<Collapse line="60" />
+			<Collapse line="105" />
+			<Collapse line="134" />
+			<Collapse line="149" />
+			<Collapse line="164" />
+			<Collapse line="174" />
+			<Collapse line="189" />
+			<Collapse line="205" />
+			<Collapse line="219" />
+			<Collapse line="231" />
+		</Folding>
+	</File>
+	<File name="mystring.h" open="0" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="76" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="parser.c" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="11295" topLine="0" />
+		</Cursor>
+		<Folding>
+			<Collapse line="10" />
+			<Collapse line="20" />
+			<Collapse line="31" />
+			<Collapse line="43" />
+			<Collapse line="55" />
+			<Collapse line="88" />
+			<Collapse line="92" />
+			<Collapse line="111" />
+			<Collapse line="153" />
+			<Collapse line="187" />
+			<Collapse line="223" />
+			<Collapse line="266" />
+			<Collapse line="289" />
+			<Collapse line="319" />
+			<Collapse line="350" />
+			<Collapse line="366" />
+			<Collapse line="381" />
+			<Collapse line="391" />
+		</Folding>
+	</File>
+</CodeBlocks_layout_file>

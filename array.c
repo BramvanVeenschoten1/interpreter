@@ -88,7 +88,7 @@ size_t arrayToHash(Array* a){
     return result;
 }
 void arrayToString(Array* a, String* out, size_t indent){
-    stringReserve(out, indent + 2);
+    stringReserve(out, indent + 1);
 
     char* c = out->data + out->length;
     for(int i = 0; i < indent; i++){
@@ -100,23 +100,21 @@ void arrayToString(Array* a, String* out, size_t indent){
         out->length += indent + 2;
         return;
     }
-    *c = '\n'; c++;
-    out->length += indent + 2;
+    out->length += indent + 1;
 
     for(int i = 0; i < a->length; i++){
-        toString(a->data[i], out, indent + 2);
-        stringReserve(out, 2);
-        c = out->data + out->length;
-        *c = ','; c++;
-        *c = '\n'; c++;
-        out->length += 2;
+        if(i > 0){
+            stringReserve(out, 1);
+            c = out->data + out->length;
+            *c = ','; c++;
+            out->length++;
+        }
+        toString(a->data[i], out, 0);
     }
-    stringReserve(out, indent + 1);
-    for(int i = 0; i < indent; i++){
-        *c = ' '; c++;
-    }
+    c = out->data + out->length;
+    stringReserve(out, 1);
     *c = ']'; c++;
-    out->length += indent + 1;
+    out->length++;
 }
 Array* arrayEval(GlobalState* state, Array* a){
     Array* self = new(state, ARRAY);

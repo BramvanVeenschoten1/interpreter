@@ -233,22 +233,22 @@ void stateInit(GlobalState* state){
     state->stack = new(state, DICT);
     state->tmp = new(state, ARRAY);
 
-    dictSet(state->stack, varFrom(stringFromChar(state, "print"),  IDENTIFIER), varFrom(&print,  BUILTIN) );
-    dictSet(state->stack, varFrom(stringFromChar(state, "true"),   IDENTIFIER), varFrom(&_true,  BUILTIN) );
-    dictSet(state->stack, varFrom(stringFromChar(state, "false"),  IDENTIFIER), varFrom(&_false, BUILTIN) );
-    dictSet(state->stack, varFrom(stringFromChar(state, "less"),   IDENTIFIER), varFrom(&less,   BUILTIN) );
-    dictSet(state->stack, varFrom(stringFromChar(state, "equals"), IDENTIFIER), varFrom(&equals, BUILTIN) );
-    dictSet(state->stack, varFrom(stringFromChar(state, "neg"),    IDENTIFIER), varFrom(&neg,    BUILTIN) );
+    dictSet(state->stack, varFrom(identifierFromChar(state, "print"),  IDENTIFIER), varFrom(&print,  BUILTIN) );
+    dictSet(state->stack, varFrom(identifierFromChar(state, "true"),   IDENTIFIER), varFrom(&_true,  BUILTIN) );
+    dictSet(state->stack, varFrom(identifierFromChar(state, "false"),  IDENTIFIER), varFrom(&_false, BUILTIN) );
+    dictSet(state->stack, varFrom(identifierFromChar(state, "less"),   IDENTIFIER), varFrom(&less,   BUILTIN) );
+    dictSet(state->stack, varFrom(identifierFromChar(state, "equals"), IDENTIFIER), varFrom(&equals, BUILTIN) );
+    dictSet(state->stack, varFrom(identifierFromChar(state, "neg"),    IDENTIFIER), varFrom(&neg,    BUILTIN) );
 
-    dictSet(state->stack, varFrom(stringFromChar(state, "add"),    IDENTIFIER), varFrom(&add,    BUILTIN) );
-    dictSet(state->stack, varFrom(stringFromChar(state, "mul"),    IDENTIFIER), varFrom(&mul,    BUILTIN) );
+    dictSet(state->stack, varFrom(identifierFromChar(state, "add"),    IDENTIFIER), varFrom(&add,    BUILTIN) );
+    dictSet(state->stack, varFrom(identifierFromChar(state, "mul"),    IDENTIFIER), varFrom(&mul,    BUILTIN) );
 
-    dictSet(state->stack, varFrom(stringFromChar(state, "sub"),    IDENTIFIER), varFrom(&sub,    BUILTIN) );
-    dictSet(state->stack, varFrom(stringFromChar(state, "div"),    IDENTIFIER), varFrom(&_div,   BUILTIN) );
-    dictSet(state->stack, varFrom(stringFromChar(state, "mod"),    IDENTIFIER), varFrom(&mod,    BUILTIN) );
+    dictSet(state->stack, varFrom(identifierFromChar(state, "sub"),    IDENTIFIER), varFrom(&sub,    BUILTIN) );
+    dictSet(state->stack, varFrom(identifierFromChar(state, "div"),    IDENTIFIER), varFrom(&_div,   BUILTIN) );
+    dictSet(state->stack, varFrom(identifierFromChar(state, "mod"),    IDENTIFIER), varFrom(&mod,    BUILTIN) );
 
-    dictSet(state->stack, varFrom(stringFromChar(state, "set"),    IDENTIFIER), varFrom(&set,    BUILTIN) );
-    dictSet(state->stack, varFrom(stringFromChar(state, "get"),    IDENTIFIER), varFrom(&get,    BUILTIN) );
-    dictSet(state->stack, varFrom(stringFromChar(state, "pop"),    IDENTIFIER), varFrom(&pop,    BUILTIN) );
-    dictSet(state->stack, varFrom(stringFromChar(state, "length"), IDENTIFIER), varFrom(&length, BUILTIN) );
+    dictSet(state->stack, varFrom(identifierFromChar(state, "set"),    IDENTIFIER), varFrom(&set,    BUILTIN) );
+    dictSet(state->stack, varFrom(identifierFromChar(state, "get"),    IDENTIFIER), varFrom(&get,    BUILTIN) );
+    dictSet(state->stack, varFrom(identifierFromChar(state, "pop"),    IDENTIFIER), varFrom(&pop,    BUILTIN) );
+    dictSet(state->stack, varFrom(identifierFromChar(state, "length"), IDENTIFIER), varFrom(&length, BUILTIN) );
 }
