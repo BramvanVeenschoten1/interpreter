@@ -8,6 +8,11 @@
 #include "mystring.h"
 #include "var.h"
 
+union Hash {
+    size_t result;
+    char bytes[8];
+};
+
 static void functionToString(Function* f, String* out, size_t indent){
     stringReserve(out, indent + 12);
     memset(out->data + out->length, ' ', indent);
@@ -64,7 +69,6 @@ static Var evalIdentifier(GlobalState* state, String* s){
             frame = result->ptr;
         else{
             printf("Error: Unknown identifier: ");
-            quote(s);
             return varFrom(0, ERROR);
         }
     }
@@ -73,20 +77,22 @@ static Var evalCall(GlobalState* state, Call* c){
     Var result = eval(state, c->expr);
 
     for(int i = 0; i < c->argLists->length; i++){
-        Var callable = result;
+        arrayPush(state->tmp, result);
 
         Array* args = arrayGet(c->argLists, i)->ptr;
         args = arrayEval(state, args);
         arrayPush(state->tmp, varFrom(args, ARRAY));
 
-        if(callable.type == BUILTIN){
-            result = ((  Var(*)(GlobalState*, Array*)  )callable.ptr)(state, args);
+        if(result.type == BUILTIN){
+            result = ((  Var(*)(GlobalState*, Array*)  )result.ptr)(state, args);
         }
-        else if (callable.type == FUNCTION){
-            Function* f = callable.ptr;
+        else if (result.type == FUNCTION){
+            Function* f = result.ptr;
             Array* params = f->params;
             if(params->length != args->length){
                 printf("Expected %d arguments, got %d\n", (int)params->length, (int)args->length);
+                arrayPop(state->tmp);
+                arrayPop(state->tmp);
                 return varFrom(0, ERROR);
             }
 
@@ -106,16 +112,20 @@ static Var evalCall(GlobalState* state, Call* c){
 
                 if(result.type == ERROR){
                     printf("(line %d) While executing function\n", (int)f->lineNo);
+                    arrayPop(state->tmp);
+                    arrayPop(state->tmp);
                     return result;
                 }
             }
-
             state->stack = dictGet(state->stack, varFrom(7, INT))->ptr;
         }
         else {
             printf("(line %d) Object is not callable\n", (int)c->lineNo);
+            arrayPop(state->tmp);
+            arrayPop(state->tmp);
             return varFrom(0, ERROR);
         }
+        arrayPop(state->tmp);
         arrayPop(state->tmp);
     }
     return result;
@@ -127,13 +137,13 @@ int compare(Var a, Var b){
     switch(a.type){
     case FUNCTION:
     case BUILTIN:
-    case INT:     return a._int - b._int;
-    case FLOAT:   return a._double - b._double < 0 ? -1 : (a._double - b._double > 0 ? 1 : 0);
-    case ARRAY:   return arrayCompare(a.ptr, b.ptr);
-    case IDENTIFIER:
-    case STRING:  return stringCompare(a.ptr, b.ptr);
-    case DICT:    return dictCompare(a.ptr, b.ptr);
-    default:      return 0;
+    case INT:        return a._int - b._int;
+    case FLOAT:      return a._double - b._double < 0 ? -1 : (a._double - b._double > 0 ? 1 : 0);
+    case ARRAY:      return arrayCompare(a.ptr, b.ptr);
+    case IDENTIFIER: return identifierCompare(a.ptr, b.ptr);
+    case STRING:     return stringCompare(a.ptr, b.ptr);
+    case DICT:       return dictCompare(a.ptr, b.ptr);
+    default:         return 0;
     }
 }
 size_t toHash(Var v){
@@ -143,8 +153,8 @@ size_t toHash(Var v){
     case FUNCTION:
     case BUILTIN:    return v._int;
     case ARRAY:      return arrayToHash(v.ptr);
-    case STRING:
-    case IDENTIFIER: return stringToHash(v.ptr);
+    case STRING:     return stringToHash(v.ptr);
+    case IDENTIFIER: return identifierToHash(v.ptr);
     case DICT:       return dictToHash(v.ptr);
     default: return 0;
     }

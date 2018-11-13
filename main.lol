@@ -1,16 +1,3 @@
-x = {
-	1: "lala", 
-	2: 36,
-	3: 3.1415,
-	4: [1,2,3],
-};
-
-print(x);
-
-pop(x, 2);
-
-print(x);
-
 factorial = (x){
 	crutch = (x, y){
 		equals(y, 1)(
@@ -21,7 +8,21 @@ factorial = (x){
 	crutch(1, x);
 };
 
+print([1, 2, 3, 4, 54, 5, 65, 6, 7, 7,8 , 9, 9]);
+
 print(factorial(6));
+
+square = (x){
+	helper = (a, b, c){
+		equals(x, a)(
+			(p, q, r){q},
+			helper,
+		)(add(a, 1), add(b, c), add(c, 2));
+	};
+	helper(1, 0, 1);
+};
+
+print(square(9));
 
 for = (func, count){
 	func(count);

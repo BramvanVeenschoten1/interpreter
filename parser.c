@@ -177,11 +177,10 @@ static Var parseIdentifier(GlobalState* gState, ParserState* pState){
         printf("(line %d) While parsing identifier: Unexpected \'%c\'\n", pState->lineNo, *pState->input);
         return varFrom(0, ERROR);
     }
-    String* s = new(gState, STRING);
-    s->data = _malloc(length);
-    s->capacity = length;
+    Identifier* s = new(gState, IDENTIFIER);
+    s->source = pState->source;
+    s->data = begin;
     s->length = length;
-    memcpy(s->data, begin, length);
     return varFrom(s, IDENTIFIER);
 }
 
@@ -397,8 +396,8 @@ void parseModule(GlobalState* gState, char* fileName){
     }
 
     String* source = stringFromFile(gState, f);
-    arrayPush(gState->tmp, varFrom(source, STRING));
     fclose(f);
+    arrayPush(gState->tmp, varFrom(source, STRING));
 
     ParserState pState;
     pState.source = source;

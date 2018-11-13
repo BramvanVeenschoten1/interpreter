@@ -36,6 +36,7 @@ typedef struct Function Function;
 typedef struct GlobalState GlobalState;
 typedef struct Pair Pair;
 typedef struct String String;
+typedef struct Identifier Identifier;
 typedef struct Var Var;
 
 struct Var{
@@ -59,7 +60,7 @@ struct Assign{
     char type;
     char tag;
     size_t lineNo;
-    String* id;
+    Identifier* id;
     Var expr;
 };
 struct Block {
@@ -109,6 +110,14 @@ struct String {
     size_t length;
     size_t capacity;
     char* data;
+};
+struct Identifier {
+    Block* next;
+    char type;
+    char tag;
+    String* source;
+    char* data;
+    size_t length;
 };
 
 #endif // VAR_H_INCLUDED

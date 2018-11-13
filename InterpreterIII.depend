@@ -1,0 +1,189 @@
+# depslib dependency file v1.0
+1542145575 source:d:\codeblocks\interpreteriii\main.c
+	"var.h"
+	"eval.h"
+	"gc.h"
+
+1538258227 source:d:\codeblocks\interpreteriii\slice.c
+	<stdlib.h>
+	<string.h>
+	"slice.h"
+
+1536503677 d:\codeblocks\interpreteriii\slice.h
+
+1537130290 source:d:\codeblocks\interpreteriii\stack.c
+	<stdlib.h>
+	<stdio.h>
+	"stack.h"
+
+1536504169 d:\codeblocks\interpreteriii\stack.h
+	<stdlib.h>
+
+1537393458 source:d:\codeblocks\interpreteriii\peg.c
+	<stdlib.h>
+	<stdio.h>
+	"peg.h"
+
+1537133314 d:\codeblocks\interpreteriii\peg.h
+	"slice.h"
+
+1541853088 d:\codeblocks\interpreteriii\mem.h
+	<stdlib.h>
+
+1538343576 source:d:\codeblocks\interpreteriii\object.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	"mystring.h"
+
+1542149096 d:\codeblocks\interpreteriii\mystring.h
+	"var.h"
+
+1541847840 source:d:\codeblocks\interpreteriii\mem.c
+	<stdlib.h>
+	<stdio.h>
+	"mem.h"
+
+1540243073 source:d:\codeblocks\interpreteriii\error.c
+	"var.h"
+	"mem.h"
+
+1542147428 d:\codeblocks\interpreteriii\var.h
+	<stdlib.h>
+	<stdio.h>
+
+1539377075 d:\codeblocks\interpreteriii\error.h
+	"var.h"
+
+1542149230 source:d:\codeblocks\interpreteriii\parser.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	"array.h"
+	"dict.h"
+	"eval.h"
+	"gc.h"
+	"mystring.h"
+	"var.h"
+
+1541706317 d:\codeblocks\interpreteriii\parser.h
+	<stdlib.h>
+	"var.h"
+	"array.h"
+	"mystring.h"
+
+1539632773 source:d:\codeblocks\interpreteriii\container.c
+	<stdlib.h>
+	<stdio.h>
+	"var.h"
+	"mem.h"
+
+1542149064 source:d:\codeblocks\interpreteriii\operations.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	"array.h"
+	"dict.h"
+	"eval.h"
+	"gc.h"
+	"mystring.h"
+	"var.h"
+
+1542149016 source:d:\codeblocks\interpreteriii\mystring.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	"array.h"
+	"dict.h"
+	"eval.h"
+	"gc.h"
+	"mystring.h"
+	"var.h"
+
+1542149542 source:d:\codeblocks\interpreteriii\array.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	"array.h"
+	"dict.h"
+	"eval.h"
+	"gc.h"
+	"mystring.h"
+	"var.h"
+
+1542055839 source:d:\codeblocks\interpreteriii\dict.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	"array.h"
+	"dict.h"
+	"eval.h"
+	"gc.h"
+	"mystring.h"
+	"var.h"
+
+1542035879 d:\codeblocks\interpreteriii\array.h
+	"var.h"
+
+1542035904 d:\codeblocks\interpreteriii\dict.h
+	"var.h"
+
+1542023934 d:\codeblocks\interpreteriii\function.h
+
+1541973218 source:d:\codeblocks\interpreteriii\function.c
+	<stdio.h>
+	<string.h>
+	"var.h"
+	"mystring.h"
+	"array.h"
+	"function.h"
+	"gc.h"
+
+1542019970 source:d:\codeblocks\interpreteriii\selector.c
+	<stdio.h>
+	<string.h>
+	"var.h"
+	"mystring.h"
+	"array.h"
+	"gc.h"
+	"function.h"
+
+1542149327 source:d:\codeblocks\interpreteriii\gc.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	"array.h"
+	"dict.h"
+	"eval.h"
+	"gc.h"
+	"mystring.h"
+	"var.h"
+
+1542035661 d:\codeblocks\interpreteriii\gc.h
+	"var.h"
+
+1541873936 d:\codeblocks\interpreteriii\operations.h
+
+1542020329 source:d:\codeblocks\interpreteriii\globalstate.c
+	<stdio.h>
+	<string.h>
+	"var.h"
+	"mystring.h"
+	"array.h"
+	"gc.h"
+	"function.h"
+
+1542060829 d:\codeblocks\interpreteriii\eval.h
+	"var.h"
+
+1542149114 source:d:\codeblocks\interpreteriii\eval.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	"array.h"
+	"dict.h"
+	"eval.h"
+	"gc.h"
+	"mystring.h"
+	"var.h"
+

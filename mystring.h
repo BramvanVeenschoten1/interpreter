@@ -17,4 +17,9 @@ String* stringDup(GlobalState* state, String* s);
 String* stringCat(GlobalState* state, String* s, String* t);
 String* stringSlice(GlobalState* state, String* s, size_t begin, size_t end);
 
+Identifier* identifierFromChar(GlobalState* state, char* x);
+int identifierCompare(Identifier* a, Identifier* b);
+size_t identifierToHash(Identifier* a);
+
+
 #endif // MYSTRING_H_INCLUDED
